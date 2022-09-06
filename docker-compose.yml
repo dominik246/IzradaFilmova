@@ -1,0 +1,15 @@
+version: '3.4'
+
+services:
+    izradafilmova:
+        image: ${DOCKER_REGISTRY-}izradafilmova
+        build:
+            context: .
+            dockerfile: IzradaFilmova/Dockerfile
+        ports:
+            - 80
+            - 443
+        environment:
+            - ASPNETCORE_URLS=https://+:443;http://+:80
+        volumes:
+            - ~/.aspnet/https:/https:ro

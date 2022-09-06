@@ -27,6 +27,8 @@
 
   <ItemGroup>
     <Folder Include="Features\ActorController\Service\" />
+    <Folder Include="Features\DirectorController\Service\" />
+    <Folder Include="Features\SuperAdminController\Service\" />
     <Folder Include="Pages\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>

@@ -8,9 +8,9 @@ namespace IzradaFilmova.Shared.APITemplate.DTOs.ActorController
 {
     public class UpdateActorProfileDTO
     {
-        public string? FirstName { get; set; }
-        public string? LastName { get; set; }
-        public string? Address { get; set; }
-        public IDictionary<Guid, decimal>? ExpectedSalaries { get; set; }
+        public string FirstName { get; set; } = default!;
+        public string LastName { get; set; } = default!;
+        public string Address { get; set; } = default!;
+        public IDictionary<Guid, decimal> ExpectedSalaries { get; set; } = default!;
     }
 }

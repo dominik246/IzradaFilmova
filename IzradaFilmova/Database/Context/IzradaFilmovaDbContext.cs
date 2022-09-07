@@ -47,6 +47,15 @@ namespace IzradaFilmova.Database.Context
                    .HasMany(p => p.MovieGenreRelations)
                    .WithOne(p => p.Movie);
 
+            builder.Entity<ActorEntity>()
+                   .HasOne(p => p.User)
+                   .WithOne()
+                   .HasForeignKey<ActorEntity>(p => p.UserId);
+            builder.Entity<DirectorEntity>()
+                   .HasOne(p => p.User)
+                   .WithOne()
+                   .HasForeignKey<DirectorEntity>(p => p.UserId);
+
             builder.Entity<ActorMovieRelationEntity>()
                    .Property(p => p.RequestedSalary)
                    .HasPrecision(16);

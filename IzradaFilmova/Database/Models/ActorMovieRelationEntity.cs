@@ -25,7 +25,8 @@ namespace IzradaFilmova.Database.Models
         public Guid MovieId { get; set; }
         public MovieEntity? Movie { get; set; }
 
-        public decimal Salary { get; set; }
+        public decimal CurrentSalary { get; set; }
+        public decimal RequestedSalary { get; set; }
         public SalaryType SalaryType { get; set; }
 
         public MovieApplicationType ApplicationType { get; set; }

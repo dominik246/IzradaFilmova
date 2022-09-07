@@ -1,6 +1,7 @@
 using FluentValidation;
 
 using IzradaFilmova.Database.Context;
+using IzradaFilmova.Database.Functions;
 
 using Microsoft.AspNetCore.Identity;
 
@@ -8,16 +9,19 @@ namespace IzradaFilmova
 {
     public static class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
             builder.Services.Scan(scan =>
-                                  scan.FromCallingAssembly()
-                                      .AddClasses(classes =>
-                                                  classes.AssignableTo(typeof(AbstractValidator<>)))
-                                      .AsSelf()
-                                      .WithTransientLifetime());
+            {
+                var callingAssembly = scan.FromCallingAssembly();
+                callingAssembly.AddClasses(classes =>
+                                           classes.AssignableTo(typeof(AbstractValidator<>)))
+                               .AsSelf()
+                               .WithTransientLifetime();
+            });
+
             builder.Services.AddDbContext<IzradaFilmovaDbContext>();
 
             // Add services to the container.
@@ -44,7 +48,9 @@ namespace IzradaFilmova
             app.UseAuthentication();
             app.UseAuthorization();
 
-            app.Run();
+            await app.SeedDatabaseDefaults();
+
+            await app.RunAsync();
         }
     }
 }

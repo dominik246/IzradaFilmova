@@ -48,7 +48,10 @@ namespace IzradaFilmova.Database.Context
                    .WithOne(p => p.Movie);
 
             builder.Entity<ActorMovieRelationEntity>()
-                   .Property(p => p.Salary)
+                   .Property(p => p.RequestedSalary)
+                   .HasPrecision(16);
+            builder.Entity<ActorMovieRelationEntity>()
+                   .Property(p => p.CurrentSalary)
                    .HasPrecision(16);
             builder.Entity<MovieEntity>()
                    .Property(p => p.Budget)

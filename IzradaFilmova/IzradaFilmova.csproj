@@ -34,7 +34,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Database\Migrations\" />
     <Folder Include="Features\Actor\Service\" />
     <Folder Include="Features\Director\Service\" />
     <Folder Include="Features\SuperAdmin\Service\" />

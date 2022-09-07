@@ -1,3 +1,9 @@
+using FluentValidation;
+
+using IzradaFilmova.Database.Context;
+
+using Microsoft.AspNetCore.Identity;
+
 namespace IzradaFilmova
 {
     public static class Program
@@ -13,9 +19,13 @@ namespace IzradaFilmova
                                       .AsSelf()
                                       .WithTransientLifetime());
             builder.Services.AddDbContext<IzradaFilmovaDbContext>();
+
             // Add services to the container.
-            //builder.Services.AddRazorPages();
             builder.Services.AddAuthorization();
+            builder.Services.AddAuthentication();
+            builder.Services.AddIdentityCore<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
+                            .AddRoles<IdentityRole>()
+                            .AddEntityFrameworkStores<IzradaFilmovaDbContext>();
 
             var app = builder.Build();
 
@@ -28,13 +38,11 @@ namespace IzradaFilmova
             }
 
             app.UseHttpsRedirection();
-            //app.UseStaticFiles();
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
-
-            //app.MapRazorPages();
 
             app.Run();
         }

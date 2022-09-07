@@ -14,6 +14,13 @@
   <ItemGroup>
     <PackageReference Include="FluentValidation" Version="11.2.1" />
     <PackageReference Include="FluentValidation.AspNetCore" Version="11.2.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.8">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.0" />
     <PackageReference Include="Scrutor" Version="4.2.0" />
   </ItemGroup>
@@ -27,9 +34,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\ActorController\Service\" />
-    <Folder Include="Features\DirectorController\Service\" />
-    <Folder Include="Features\SuperAdminController\Service\" />
+    <Folder Include="Database\Migrations\" />
     <Folder Include="Features\Actor\Service\" />
     <Folder Include="Features\Director\Service\" />
     <Folder Include="Features\SuperAdmin\Service\" />

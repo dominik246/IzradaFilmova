@@ -13,3 +13,24 @@ services:
             - ASPNETCORE_URLS=https://+:443;http://+:80
         volumes:
             - ~/.aspnet/https:/https:ro
+        networks:
+            - backend
+        depends_on:
+            - sqlserver
+    sqlserver:
+        image: mcr.microsoft.com/mssql/server:2022-latest
+        environment:
+            - ACCEPT_EULA=Y
+            - SA_PASSWORD=l@rU2@VlJ3UYObzOpS&(AU$mM[.yV#)SuRA4_SDQ%aGHfKi=6i
+        ports:
+            - 1433
+        networks:
+            - backend
+        volumes:
+            - sqlvolume:/var/opt/mssql
+networks:
+    backend:
+        name: sql_server_shared_network
+volumes:
+    sqlvolume:
+        name: sql_server_files

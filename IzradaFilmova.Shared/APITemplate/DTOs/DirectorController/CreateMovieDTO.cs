@@ -10,10 +10,10 @@ namespace IzradaFilmova.Shared.APITemplate.DTOs.DirectorController
     {
         public string Title { get; set; } = default!;
         public string? Description { get; set; }
-        public TimeSpan? Duration { get; set; }
+        public TimeSpan Duration { get; set; }
         public decimal Budget { get; set; }
-        public DateTime? CastingStart { get; set; }
-        public DateTime? CastingEnd { get; set; }
+        public DateTime CastingStart { get; set; }
+        public DateTime CastingEnd { get; set; }
         public GenreDTO[]? Genres { get; set; }
     }
 }

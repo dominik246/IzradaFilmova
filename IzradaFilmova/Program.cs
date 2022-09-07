@@ -6,6 +6,13 @@ namespace IzradaFilmova
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            builder.Services.Scan(scan =>
+                                  scan.FromCallingAssembly()
+                                      .AddClasses(classes =>
+                                                  classes.AssignableTo(typeof(AbstractValidator<>)))
+                                      .AsSelf()
+                                      .WithTransientLifetime());
+            builder.Services.AddDbContext<IzradaFilmovaDbContext>();
             // Add services to the container.
             //builder.Services.AddRazorPages();
             builder.Services.AddAuthorization();

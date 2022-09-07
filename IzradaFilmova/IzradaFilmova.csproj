@@ -15,6 +15,7 @@
     <PackageReference Include="FluentValidation" Version="11.2.1" />
     <PackageReference Include="FluentValidation.AspNetCore" Version="11.2.1" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.0" />
+    <PackageReference Include="Scrutor" Version="4.2.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -29,6 +30,9 @@
     <Folder Include="Features\ActorController\Service\" />
     <Folder Include="Features\DirectorController\Service\" />
     <Folder Include="Features\SuperAdminController\Service\" />
+    <Folder Include="Features\Actor\Service\" />
+    <Folder Include="Features\Director\Service\" />
+    <Folder Include="Features\SuperAdmin\Service\" />
     <Folder Include="Pages\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>

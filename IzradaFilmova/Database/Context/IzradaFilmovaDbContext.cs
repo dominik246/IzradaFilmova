@@ -71,5 +71,37 @@ namespace IzradaFilmova.Database.Context
         {
             optionsBuilder.UseSqlServer(_configuration["SqlServer:ConnectionString"]);
         }
+
+        public override async Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default)
+        {
+            OnSaveChanges();
+            return await base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
+        }
+
+        public override int SaveChanges(bool acceptAllChangesOnSuccess)
+        {
+            OnSaveChanges();
+            return base.SaveChanges(acceptAllChangesOnSuccess);
+        }
+
+        private void OnSaveChanges()
+        {
+            if (ChangeTracker.HasChanges() is true)
+            {
+                foreach (var item in ChangeTracker.Entries().Where(p => p.Entity is BaseEntity))
+                {
+                    var casted = (item.Entity as BaseEntity)!;
+                    if (item.State is EntityState.Added)
+                    {
+                        casted.DateCreated = DateTime.Now;
+                    }
+
+                    if (item.State is EntityState.Modified)
+                    {
+                        casted.DateUpdated = DateTime.Now;
+                    }
+                }
+            }
+        }
     }
 }

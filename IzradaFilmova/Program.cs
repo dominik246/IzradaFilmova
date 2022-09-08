@@ -20,9 +20,15 @@ namespace IzradaFilmova
                                            classes.AssignableTo(typeof(AbstractValidator<>)))
                                .AsSelf()
                                .WithTransientLifetime();
+                callingAssembly.AddClasses(classes => classes.Where(@class => @class.Name.EndsWith("Service", StringComparison.OrdinalIgnoreCase)))
+                               .AsImplementedInterfaces()
+                               .WithScopedLifetime();
             });
 
             builder.Services.AddDbContext<IzradaFilmovaDbContext>();
+            builder.Services.AddAutoMapper(typeof(Program));
+            builder.Services.AddHttpContextAccessor();
+            builder.Services.AddControllers();
 
             // Add services to the container.
             builder.Services.AddAuthorization();
@@ -44,6 +50,7 @@ namespace IzradaFilmova
             app.UseHttpsRedirection();
 
             app.UseRouting();
+            app.MapControllers();
 
             app.UseAuthentication();
             app.UseAuthorization();

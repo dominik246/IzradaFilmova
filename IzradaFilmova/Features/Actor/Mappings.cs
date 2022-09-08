@@ -19,6 +19,7 @@ namespace IzradaFilmova.Features.Actor
                                               .ForMember(p => p.Actors, dest => dest.MapFrom(src => src.ActorMovieRelations));
 
             CreateMap<DirectorEntity, DirectorDTO>();
+            CreateMap<UpdateActorProfileDTO, ActorEntity>();
         }
     }
 }

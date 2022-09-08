@@ -3,6 +3,7 @@
 using FluentValidation;
 using FluentValidation.AspNetCore;
 
+using IzradaFilmova.Database.Models;
 using IzradaFilmova.Features.Actor.Service;
 using IzradaFilmova.Functions;
 using IzradaFilmova.Models;
@@ -211,7 +212,9 @@ namespace IzradaFilmova.Features.Actor.Controller
                 return BadRequest(ModelState);
             }
 
-            var requestResult = await _actorService.UpdateActorProfile(userId, updateActorProfile, token);
+            var mapped = _mapper.Map<ActorEntity>(updateActorProfile);
+
+            var requestResult = await _actorService.UpdateActorProfile(userId, mapped, token);
             if (requestResult.IsSuccessful)
             {
                 return Ok(_mapper.Map<ActorDTO>(requestResult.ReturnValue));

@@ -36,7 +36,7 @@ namespace IzradaFilmova.Models
 
     public class ServiceResult<T> : ServiceResult where T : class
     {
-        public ServiceResult(T returnValue, IReadOnlyCollection<string>? reasons = default) : base(reasons)
+        public ServiceResult(T? returnValue, IReadOnlyCollection<string>? reasons = default) : base(reasons)
         {
             ReturnValue = returnValue;
             if(returnValue is null)
@@ -49,7 +49,7 @@ namespace IzradaFilmova.Models
             }
         }
 
-        public T ReturnValue { get; set; }
+        public T? ReturnValue { get; set; }
     }
 
     public static class ServiceResultExtensions

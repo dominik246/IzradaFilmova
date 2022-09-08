@@ -17,13 +17,13 @@ namespace IzradaFilmova.Database.Context
             _configuration = configuration;
         }
 
-        public virtual ActorEntity Actors { get; set; } = default!;
-        public virtual DirectorEntity Directors { get; set; } = default!;
-        public virtual GenreEntity Genres { get; set; } = default!;
-        public virtual MovieEntity Movies { get; set; } = default!;
+        public virtual DbSet<ActorEntity> Actors { get; set; } = default!;
+        public virtual DbSet<DirectorEntity> Directors { get; set; } = default!;
+        public virtual DbSet<GenreEntity> Genres { get; set; } = default!;
+        public virtual DbSet<MovieEntity> Movies { get; set; } = default!;
 
-        public virtual ActorMovieRelationEntity ActorMovieRelations { get; set; } = default!;
-        public virtual MovieGenreRelationEntity MovieGenreRelations { get; set; } = default!;
+        public virtual DbSet<ActorMovieRelationEntity> ActorMovieRelations { get; set; } = default!;
+        public virtual DbSet<MovieGenreRelationEntity> MovieGenreRelations { get; set; } = default!;
 
         protected override void OnModelCreating([NotNull]ModelBuilder builder)
         {

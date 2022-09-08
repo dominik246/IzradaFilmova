@@ -11,7 +11,6 @@ namespace IzradaFilmova.Features.Actor.Validations
             RuleFor(p => p.FirstName).NotEmpty();
             RuleFor(p => p.LastName).NotEmpty();
             RuleFor(p => p.Address).NotEmpty();
-            RuleFor(p => p.ExpectedSalaries).NotNull();
         }
     }
 }

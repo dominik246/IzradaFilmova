@@ -8,8 +8,8 @@ namespace IzradaFilmova.Shared.APITemplate.DTOs.ActorController
 {
     public class DirectorFilter
     {
-        public Guid? DirectorId { get; set; }
-        public Guid[]? GenreIds { get; set; }
+        public Guid DirectorId { get; set; }
+        public Guid[] GenreIds { get; set; } = Array.Empty<Guid>();
         public DateTime? StartDateOfMovie { get; set; }
         public DateTime? EndDateOfMovie { get; set; }
     }

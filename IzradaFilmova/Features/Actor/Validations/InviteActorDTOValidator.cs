@@ -9,7 +9,6 @@ namespace IzradaFilmova.Features.Actor.Validations
         public InviteActorDTOValidator()
         {
             RuleFor(p => p.MovieId).NotEmpty();
-            RuleFor(p => p.ActorId).NotEmpty();
         }
     }
 }

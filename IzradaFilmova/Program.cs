@@ -23,6 +23,9 @@ namespace IzradaFilmova
                 callingAssembly.AddClasses(classes => classes.Where(@class => @class.Name.EndsWith("Service", StringComparison.OrdinalIgnoreCase)))
                                .AsImplementedInterfaces()
                                .WithScopedLifetime();
+                callingAssembly.AddClasses(classes => classes.Where(@class => @class.Name.EndsWith("Repository", StringComparison.OrdinalIgnoreCase)))
+                               .AsImplementedInterfaces()
+                               .WithScopedLifetime();
             });
 
             builder.Services.AddDbContext<IzradaFilmovaDbContext>();

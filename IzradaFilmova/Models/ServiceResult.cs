@@ -20,7 +20,14 @@ namespace IzradaFilmova.Models
             FailedReason = reasons;
         }
 
+        public ServiceResult(IReadOnlyCollection<string>? reasons = default)
+        {
+            FailedReason = reasons;
+            IsFailed = true;
+        }
+
         public static ServiceResult SuccessfulResult { get; } = new ServiceResult(true);
+        public static ServiceResult FailedResult { get; } = new ServiceResult(false);
 
         public bool IsSuccessful { get; protected set; }
         public bool IsFailed { get; protected set; }
@@ -29,9 +36,17 @@ namespace IzradaFilmova.Models
 
     public class ServiceResult<T> : ServiceResult where T : class
     {
-        public ServiceResult(bool value, T returnValue, IReadOnlyCollection<string>? reasons = default) : base(value, reasons)
+        public ServiceResult(T returnValue, IReadOnlyCollection<string>? reasons = default) : base(reasons)
         {
             ReturnValue = returnValue;
+            if(returnValue is null)
+            {
+                IsFailed = true;
+            }
+            else
+            {
+                IsSuccessful = true;
+            }
         }
 
         public T ReturnValue { get; set; }
